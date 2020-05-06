@@ -1,0 +1,42 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+<div style="text-align:center;color:green;">
+    <h1>Product Details</h1>
+</div>
+ {% for product in productdetails %}
+ <div class="container">
+     <div id="divleft">
+          <img src="{{product.mainimage.url}}" style="width:80%;height:400px;margin-top:30px;" class="img-thumbnail" alt="Cinque Terre">
+     </div>
+     <div id="divright">
+         <div>
+       <table style="margin-top:30px" class="table">
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td style="color:#4494e3;">{{product.name}}</td>
+              </tr>
+              <tr>
+                <td style="font-size:20px;">Price</td>
+                <td style="color:green;font-size:20px;">{{product.price}} Taka</td>
+              </tr>
+              <tr>
+                <td>Phone Number:</td>
+                <td>01948172608</td>
+              </tr>
+              <tr>
+                <td>Details</td>
+                <td>{{product.detail_text}}</td>
+              </tr>
+            </tbody>
+       </table>
+             </div>
+         <div>
+             <a href="/custommer_order/{{ product.id }}"class="btn btn-success">Order Now</a>
+         </div>
+     </div>
+ </div>
+ {% endfor %}
+{% endblock %}

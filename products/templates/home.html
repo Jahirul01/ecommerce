@@ -15,15 +15,26 @@
       {% for product in productcategories %}
       <div class="col-md-4 col-sm-12 col-lg-3 m-1">
               <div class="card" style='width:100%; height:300px;'>
-                <img src="{{product.productimage.url}}" style="width:100%;" class="card-img-top" alt="{{ product.productname }}">
+                <img src="{{product.productimage.url}}" style="width:100%;height:100%;" class="card-img-top" alt="{{ product.productname }}">
                       <div class="card-body">
-                        <h5 class="card-title"> {{ product.productname }}</h5>
-                      </div>
-                  <div class='card-footer text-center'>
-                  <a href="#" class="btn btn-success">Add to Cart</a>
-                 <div>
-                    <a href="{% url 'displayproduct' %}" class="btn btn-success" >Home</a>
-                  </div>
+
+                          <a><h5 class="card-title"> {{ product.productname }}</h5></a>
+                           <a href="{% url 'displayproduct' %}" class="btn btn-success" >Show all {{ product.productname }}</a>
+
+                          {% if product.productname == "Man and Woman Dress" %}
+                                <a href="{% url 'displayproduct' %}" class="btn btn-success" >{{ product.productname }}</a>
+                          {% elif product.productname == "Electronics" %}
+                          {% elif product.productname == "Rice" %}
+                          {% elif product.productname == "Cow" %}
+                          {% elif product.productname == "Furnitures" %}
+                          {% elif product.productname == "Cycle/Motor Cycle" %}
+                          {% elif product.productname == "Goat" %}
+                          {% elif product.productname == "Umbrella" %}
+                          {% elif product.productname == "Hen" %}
+                          {% else %}
+                                <a href="{% url 'displayproduct' %}" class="btn btn-success" >{{ product.productname }}</a>
+                          {% endif %}
+
                   </div>
                </div>
         </div>

@@ -1,57 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Customer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
+{% extends 'base_layout.html' %}
 
-    #divcontrol {
-
-        margin: 0 auto;
-        padding: 20px;
-        margin-top: 100px;
-
-    }
-    </style>
-
-</head>
-
-<body>
-
-<!--<div class="container">-->
-<!--    {% for product in productdetails %}-->
-<!--    <table class="table">-->
-
-<!--    <thead>-->
-<!--      <tr>-->
-<!--        <th>Product Details</th>-->
-<!--      </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--      <tr>-->
-<!--        <td>Product Id:</td>-->
-<!--        <td>{{product.id}}</td>-->
-<!--      </tr>-->
-<!--      <tr>-->
-<!--        <td>Name</td>-->
-<!--        <td>{{product.name}}</td>-->
-<!--      </tr>-->
-<!--      <tr class="table-primary">-->
-<!--        <td>Price</td>-->
-<!--        <td>{{product.price}}</td>-->
-<!--      </tr>-->
-<!--    </tbody>-->
-<!--{% endfor %}-->
-<!--  </table>-->
-<!--</div>-->
+{% block content %}
 
 <div id="divcontrol" class="container">
-
-
  {% for product in productdetails %}
     <form class="form-horizontal" method="post" action="/customer_order_submit/{{ product.id }}">
         {% csrf_token %}
@@ -68,20 +19,26 @@
                  <input type="text" class="form-control"  name="product_name" value="{{ product.name }}" readonly >
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2">Number Of Piece:</label>
+            <div class="col-sm-10">
+                  <input type="number" class="form-control" name="number_piece" required>
+            </div>
+        </div>
          <div class="form-group">
-            <label class="control-label col-sm-2">name:</label>
+            <label class="control-label col-sm-2">your name:</label>
             <div class="col-sm-10">
                   <input type="text" class="form-control" name="customer_name" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2">phone:</label>
+            <label class="control-label col-sm-2">Your phone No:</label>
             <div class="col-sm-10">
                   <input type="tel" class="form-control" name="customer_phone" required>
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2">adress:</label>
+            <label class="control-label col-sm-2">Your adress:</label>
             <div class="col-sm-10">
                  <input type="text" class="form-control" name="customer_adress" required>
             </div>
@@ -101,5 +58,4 @@
     </form>
     {% endfor %}
 </div>
-</body>
-</html>
+{% endblock %}
